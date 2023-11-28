@@ -1,0 +1,49 @@
+.topPoolsBackground {
+  width: 100%;
+  padding: 20px 0;
+  background: linear-gradient(
+    114deg,
+    rgba(242, 242, 242, 0.8) 0%,
+    rgba(252, 242, 248, 0.8) 21.75%,
+    rgba(235, 244, 254, 0.8) 49.79%,
+    rgba(238, 251, 244, 0.8) 102.31%
+  );
+}
+
+.justifyWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.topPoolsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 10px;
+}
+
+.topPoolsLast24h {
+  text-align: center;
+}
+
+.topPoolsLast24h h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: var(--primary-color);
+}
+
+.topPoolsLast24h span {
+  font-size: 14px;
+  color: var(--text-gray-color);
+}
+
+.skeleton {
+  width: 180px;
+  height: 94px;
+}

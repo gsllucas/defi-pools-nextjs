@@ -1,0 +1,68 @@
+.poolCard {
+  min-width: 180px;
+  width: 100%;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.poolCard:hover {
+  transition: 0.1s;
+  background: rgba(234, 227, 240, 0.5);
+}
+
+.pairAndChainWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  row-gap: 4px;
+  flex-direction: column;
+}
+
+.pair {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-black-color);
+}
+
+.poolVolume {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-black-color);
+}
+
+.chain {
+  padding: 2px 4px;
+  font-size: 10px;
+  font-weight: 400;
+  background: var(--purple-baseground);
+  color: var(--primary-color);
+  border-radius: 6px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+.volumeAndExchangeWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.label {
+  font-size: 10px;
+  color: var(--text-gray-color);
+  /* margin-bottom: 5px; */
+}
+
+.exchange,
+.poolFee {
+  font-size: 10px;
+  color: var(--text-gray-color);
+}
