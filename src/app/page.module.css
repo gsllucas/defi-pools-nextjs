@@ -227,3 +227,23 @@
     transform: rotate(0deg);
   }
 }
+
+.screenLayout {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  padding: 24px;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 24px;
+}
+
+.leftWrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  row-gap: 48px;
+}

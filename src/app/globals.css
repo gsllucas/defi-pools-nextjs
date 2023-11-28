@@ -1,9 +1,16 @@
 :root {
-  --max-width: 1100px;
+  --max-width: 1160px;
   --border-radius: 12px;
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+
+  --primary-color: #774af6;
+  --purple-baseground: #e2dcf4;
+  --gray-background: #f6f6f6;
+
+  --text-black-color: #2c2935;
+  --text-gray-color: #6e6e73;
 
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -83,25 +90,29 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: 'Rubik';
 }
 
 a {
   color: inherit;
   text-decoration: none;
 }
-
+/* 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+} */
+
+::-webkit-scrollbar {
+  -webkit-appearance: none;
+  width: 8px;
+  background-color: #ededed !important;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px;
+  background-color: #c6c6c6 !important;
+  box-shadow: 0 0 1px hsla(0, 0%, 100%, 0.5) !important;
 }
