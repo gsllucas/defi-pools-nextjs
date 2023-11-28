@@ -1,0 +1,33 @@
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  column-gap: 15px;
+  margin-bottom: 40px;
+}
+
+.drawerHeader h1 {
+  font-size: 24px;
+  color: var(--text-black-color);
+}
+
+.drawerHeader span {
+  font-size: 16px;
+  color: var(--text-gray-color);
+}
+
+.volumeTvlGreaterThan1Text {
+  padding: 15px 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  background: linear-gradient(
+    114deg,
+    rgba(242, 242, 242, 0.8) 0%,
+    rgba(252, 242, 248, 0.8) 21.75%,
+    rgba(235, 244, 254, 0.8) 49.79%,
+    rgba(238, 251, 244, 0.8) 102.31%
+  );
+  color: var(--primary-color);
+  font-weight: 400;
+  border-radius: 12px;
+}
