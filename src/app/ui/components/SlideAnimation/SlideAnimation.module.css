@@ -1,0 +1,14 @@
+.slideAnimation {
+  animation: animation 0.25s ease-in;
+}
+
+@keyframes animation {
+  0% {
+    transform: translateX(180px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
