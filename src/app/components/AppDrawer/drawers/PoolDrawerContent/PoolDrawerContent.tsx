@@ -2,25 +2,38 @@ import { PoolObject } from '@/app/interfaces/pool-object';
 import { formatPair, toCurrency } from '@/app/utils/functions/functions';
 
 import styles from './PoolDrawerContent.module.css';
-import { Chart } from '@/app/ui/components/Chart/Chart';
+import { Chart, ChartProps } from '@/app/ui/components/Chart/Chart';
 import { DataTile, DataTileProps } from '@/app/ui/components/DataTile/DataTile';
 import { Spacing } from '@/app/ui/components/Spacing/Spacing';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { CSSProperties, useEffect, useState } from 'react';
 import { Tab, Tabs } from '@/app/ui/components/Tabs/Tabs';
 import { SlideAnimation } from '@/app/ui/components/SlideAnimation/SlideAnimation';
 import { PoolRestfulService } from '@/app/services/PoolRestfulService';
 import { PoolChartData } from '@/app/interfaces/pool-chart-data';
+import { SizedBox } from '@/app/ui/components/SizedBox/SizedBox';
+
+import tvlChart from '@/app/ui/components/Chart/tvl.json';
+
+const sizedBoxStyle: CSSProperties = {
+  display: 'flex',
+  width: '100%',
+  height: 280,
+  flexDirection: 'column',
+  alignItems: 'flex-end',
+  justifyContent: 'center',
+};
 
 export function PoolDrawerContent(poolObject: PoolObject) {
   const [chart, setChart] = useState<PoolChartData[]>([]);
   const [loadingChart, setLoadingChart] = useState(false);
-  const [chartProps, setChartProps] = useState<{
-    series: number[];
-    xAxis: Date[];
-  }>({ series: [], xAxis: [] });
+  const [chartProps, setChartProps] = useState<ChartProps>({
+    series: [],
+    xAxis: [],
+    valueFormatter: '$',
+  });
   const [tabs, setTabs] = useState([
-    { id: 1, value: 'tvlUsd', label: 'TVL', active: true },
-    { id: 2, value: 'apy', label: 'APR', active: false },
+    { id: 1, value: 'tvlUsd', symbol: '$', label: 'TVL', active: true },
+    { id: 2, value: 'apy', symbol: '%', label: 'APR', active: false },
   ]);
 
   useEffect(() => {
@@ -30,7 +43,8 @@ export function PoolDrawerContent(poolObject: PoolObject) {
   useEffect(() => {
     const selectedTab = tabs.find((tab) => tab.active);
     const property = selectedTab?.value as 'tvlUsd' | 'apy';
-    setCurrentScreenChart(property);
+    const symbol = selectedTab?.symbol as '$' | '%' | undefined;
+    setCurrentScreenChart(property, symbol);
   }, [chart, tabs]);
 
   const poolRestfulService = new PoolRestfulService();
@@ -67,15 +81,30 @@ export function PoolDrawerContent(poolObject: PoolObject) {
         poolObject.poolId
       );
       const resultJson = await result.json();
-      setChart(resultJson.data);
+      // TODO: Sort chat data according to timestamp
+      sortProperlyChartData(resultJson.data);
       setLoadingChart(false);
     } catch (err) {}
   }
 
-  function setCurrentScreenChart(property: 'tvlUsd' | 'apy') {
+  function sortProperlyChartData(chart: any) {
+    const data = chart.sort((a: any, b: any) => {
+      if (new Date(a.timestamp).getTime() > new Date(b.timestamp).getTime())
+        return -1;
+      if (new Date(a.timestamp).getTime() < new Date(b.timestamp).getTime())
+        return 1;
+      return 0;
+    });
+    setChart(data);
+  }
+
+  function setCurrentScreenChart(
+    property: 'tvlUsd' | 'apy',
+    symbol: '$' | '%' | undefined
+  ) {
     const series = chart.map((chart) => chart[property]);
     const xAxis = chart.map((chart) => new Date(chart.timestamp));
-    const props = { series, xAxis };
+    const props = { series, xAxis, valueFormatter: symbol };
     setChartProps(props);
   }
 
@@ -87,10 +116,20 @@ export function PoolDrawerContent(poolObject: PoolObject) {
       </div>
       <Tabs tabs={tabs} onClick={handleTabClick} />
       {/* <SlideAnimation startTrigger={true}> */}
-      {!loadingChart && (
-        <Chart series={chartProps.series} xAxis={chartProps.xAxis} />
+      {!loadingChart ? (
+        <SizedBox style={sizedBoxStyle}>
+          <Chart
+            series={chartProps.series}
+            xAxis={chartProps.xAxis}
+            valueFormatter={chartProps.valueFormatter}
+          />
+        </SizedBox>
+      ) : (
+        <SizedBox style={{ ...sizedBoxStyle, alignItems: 'center' }}>
+          Loading...
+        </SizedBox>
       )}
-      {loadingChart && 'Loading...'}
+
       {/* </SlideAnimation> */}
       <Spacing height={40} />
       {poolObject.volumeTvl > 1 && (
