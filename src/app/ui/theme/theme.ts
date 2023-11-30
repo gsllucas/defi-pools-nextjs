@@ -11,20 +11,28 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           fontSize: 12,
-          fontWeight: 500,
+          fontWeight: 400,
           '&:before': { borderBottom: '0.5px solid #efefef !important' },
           '&:hover': { borderBottom: '0.5px solid #efefef !important' },
         },
       },
       defaultProps: {
-        style: { background: '#FAFAFA' },
+        style: { background: '#fafafa' },
       },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: { root: { border: '1px solid #efefef' } },
     },
     MuiInputBase: {
       styleOverrides: {
         root: { '&:hover:not': { borderBottom: '0.5px solid #efefef' } },
       },
       defaultProps: { style: { fontSize: 12 } },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: { fontSize: 12, color: 'var(--text-black-color)' },
+      },
     },
   },
   typography: { fontFamily: 'Rubik' },
