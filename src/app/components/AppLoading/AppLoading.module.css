@@ -1,0 +1,22 @@
+.fadeAway {
+  animation: 0.6s fadeAwayAnimation forwards;
+  position: absolute;
+  z-index: 1;
+}
+
+.title {
+  background: linear-gradient(282deg, #7f1cfe 0%, #0f0021 91.46%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes fadeAwayAnimation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}

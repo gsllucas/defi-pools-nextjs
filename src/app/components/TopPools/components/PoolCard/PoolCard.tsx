@@ -18,7 +18,8 @@ export function PoolCard({ poolObject, loading, index }: PoolCardProps) {
   const { setDrawerOpen, setDrawerChildren } = useDrawerContext();
 
   useEffect(() => {
-    if (index === 0) openDrawer();
+    if (index === 0) setTimeout(() => openDrawer(), 600);
+    // TODO: Change here later
   }, []);
 
   function openDrawer() {

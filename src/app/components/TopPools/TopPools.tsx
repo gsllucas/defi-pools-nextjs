@@ -5,10 +5,12 @@ import { PoolCard } from './components/PoolCard/PoolCard';
 import { useEffect, useState } from 'react';
 import { PoolObject } from '@/app/interfaces/pool-object';
 import { Skeleton } from '@mui/material';
+import { useAppPageLoadingContext } from '@/app/contexts/AppPageLoadingContent';
 
 export function ToopPools() {
   const [topPools, setTopPools] = useState<PoolObject[]>([]);
   const [loadingTopPools, setLoadingTopPools] = useState(true);
+  const { setAppPageLoading } = useAppPageLoadingContext();
 
   useEffect(() => {
     getTopVolumePoolsInLast24h();
@@ -23,9 +25,10 @@ export function ToopPools() {
       const resultJson = await result.json();
       setTopPools(resultJson.pools);
       setLoadingTopPools(false);
+      setAppPageLoading(false);
     } catch (err) {
       setLoadingTopPools(false);
-      // Fazer tratamento de erro
+      // TODO: Fazer todos tratamento de erro
     }
   }
 
