@@ -3,6 +3,8 @@ export interface QueryParams {
   chain?: string;
   token?: string;
   orientation?: 'asc' | 'desc';
+  limit: number;
+  offset: number;
   orderBy?:
     | 'pair'
     | 'tvl'

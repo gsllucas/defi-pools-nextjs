@@ -11,17 +11,19 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           fontSize: 12,
-          fontWeight: 400,
+          fontWeight: 500,
           '&:before': { borderBottom: '0.5px solid #efefef !important' },
           '&:hover': { borderBottom: '0.5px solid #efefef !important' },
         },
       },
       defaultProps: {
-        style: { background: '#fafafa' },
+        style: { background: '#F6F6F6' },
       },
     },
     MuiOutlinedInput: {
-      styleOverrides: { root: { border: '1px solid #efefef' } },
+      styleOverrides: {
+        root: { borderRadius: 8 },
+      },
     },
     MuiInputBase: {
       styleOverrides: {
@@ -34,6 +36,15 @@ export const theme = createTheme({
         root: { fontSize: 12, color: 'var(--text-black-color)' },
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        root: { fontSize: 12, textTransform: 'none' },
+      },
+    },
   },
   typography: { fontFamily: 'Rubik' },
 });
+
+export abstract class OnInit {
+  ngOnInit(): void {}
+}

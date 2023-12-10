@@ -1,37 +1,35 @@
-import { Spacing } from '@/app/ui/components/Spacing/Spacing';
 import styles from './TopPools.module.css';
-import { environment } from '@/environments/environment';
 import { PoolCard } from './components/PoolCard/PoolCard';
 import { useEffect, useState } from 'react';
 import { PoolObject } from '@/app/interfaces/pool-object';
 import { Skeleton } from '@mui/material';
-import { useAppPageLoadingContext } from '@/app/contexts/AppPageLoadingContent';
+import { usePoolsDataContext } from '@/app/contexts/PoolsDataContext';
+import { PoolRestfulService } from '@/app/services/PoolRestfulService';
 
-export function ToopPools() {
+export function TopPools() {
   const [topPools, setTopPools] = useState<PoolObject[]>([]);
-  const [loadingTopPools, setLoadingTopPools] = useState(true);
-  const { setAppPageLoading } = useAppPageLoadingContext();
+  const [loadingTopPools, setLoadingTopPools] = useState(false);
+  const { poolsData } = usePoolsDataContext();
+
+  const poolRestfulService = new PoolRestfulService();
 
   useEffect(() => {
-    getTopVolumePoolsInLast24h();
+    getTopPools();
   }, []);
 
-  async function getTopVolumePoolsInLast24h() {
+  async function getTopPools() {
     try {
       setLoadingTopPools(true);
-      const result = await fetch(
-        `${environment.API_URL}/pools?orderBy=volume1d&orientation=desc&limit=5&offset=0`
-      );
-      const resultJson = await result.json();
-      setTopPools(resultJson.pools);
+      const result = await poolRestfulService.getTopPools();
+      console.log('top pools result data', result.pools);
+      if (result) setTopPools(result.pools);
       setLoadingTopPools(false);
-      setAppPageLoading(false);
     } catch (err) {
       setLoadingTopPools(false);
-      // TODO: Fazer todos tratamento de erro
     }
   }
 
+  // TODO: Ajustar skeleton loading
   if (loadingTopPools) return <Skeleton />;
 
   return (

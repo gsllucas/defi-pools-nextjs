@@ -1,0 +1,49 @@
+.tile {
+  padding: 20px 30px;
+  border-radius: 12px;
+  border: 1px solid var(--light-border-color);
+  width: 100%;
+  cursor: pointer;
+  transition: 0.15s;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  margin-right: 10;
+}
+
+.highlightedTileBackground {
+  background: linear-gradient(
+    114deg,
+    rgba(242, 242, 242, 0.8) 0%,
+    rgba(252, 242, 248, 0.8) 21.75%,
+    rgba(235, 244, 254, 0.8) 49.79%,
+    rgba(238, 251, 244, 0.8) 102.31%
+  );
+}
+
+.tileData,
+.pairTileData,
+.chainTileData {
+  flex: 1;
+  font-size: 13px;
+  color: var(--text-gray-color);
+  text-align: left;
+}
+
+.pairTileData {
+  color: var(--text-black-color);
+  font-weight: 700;
+}
+
+.chainTileData {
+  padding: 2px 4px;
+  /* background: var(--purple-baseground); */
+  border-radius: 4px;
+  /* color: var(--primary-color); */
+  /* font-weight: 500; */
+}
+
+.tile:hover {
+  transition: 0.15s;
+  background: #f6f6f6;
+}

@@ -4,7 +4,7 @@
 
 @keyframes animation {
   0% {
-    transform: translateX(180px);
+    transform: translateX(20px);
     opacity: 0;
   }
   100% {

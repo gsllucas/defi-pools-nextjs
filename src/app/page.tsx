@@ -1,15 +1,11 @@
 'use client';
 
-import { Header } from './components/Header/Header';
-import { ComponentResizing } from './layout/ComponentResizing';
-import { ToopPools } from './components/TopPools/TopPools';
 import { DrawerProvider } from './contexts/DrawerContext';
 import { AppDrawer } from './components/AppDrawer/AppDrawer';
-import { MainContent } from './components/MainContent/MainContent';
 import { ThemeProvider } from '@mui/material';
 import { theme } from './ui/theme/theme';
 import { AppPage } from './layout/AppPage';
-import { AppPageLoadingProvider } from './contexts/AppPageLoadingContent';
+import { AppPageLoadingProvider } from './contexts/AppPageLoadingContext';
 
 export default function Home() {
   return (
@@ -17,6 +13,7 @@ export default function Home() {
       <ThemeProvider theme={theme}>
         <AppPageLoadingProvider>
           <DrawerProvider>
+            {/* Call pools data provider here */}
             <AppPage />
             <AppDrawer />
           </DrawerProvider>

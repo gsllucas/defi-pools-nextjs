@@ -1,13 +1,15 @@
 .topPoolsBackground {
   width: 100%;
   padding: 20px 0;
-  background: linear-gradient(
+  /* background: linear-gradient(
     114deg,
     rgba(242, 242, 242, 0.8) 0%,
     rgba(252, 242, 248, 0.8) 21.75%,
     rgba(235, 244, 254, 0.8) 49.79%,
     rgba(238, 251, 244, 0.8) 102.31%
-  );
+  ); */
+  /* background: #fcfcfc; */
+  border-bottom: 1px solid var(--light-border-color);
 }
 
 .justifyWrapper {

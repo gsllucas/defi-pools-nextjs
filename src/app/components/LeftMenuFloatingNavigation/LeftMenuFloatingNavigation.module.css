@@ -1,0 +1,10 @@
+.floatingMenu {
+  width: 150px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+}

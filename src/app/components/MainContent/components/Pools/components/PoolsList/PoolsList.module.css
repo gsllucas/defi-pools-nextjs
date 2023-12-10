@@ -1,0 +1,14 @@
+.labelTileRowHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  margin: 35px 0;
+}
+
+.label {
+  flex: 1;
+  font-size: 11px;
+  color: var(--text-black-color);
+  font-weight: 700;
+}

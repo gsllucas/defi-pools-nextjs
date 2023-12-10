@@ -132,14 +132,14 @@ export function PoolDrawerContent(poolObject: PoolObject) {
 
       {/* </SlideAnimation> */}
       <Spacing height={40} />
-      {poolObject.volumeTvl > 1 && (
+      {/* {poolObject.volumeTvl > 1 && (
         <p className={styles.volumeTvlGreaterThan1Text}>
           <strong>V/TVL greater than 1</strong> represents a good opportunity to
           provide liquidity, generating <strong>more fees collection</strong>.
           The pool volume is greater than the tokens supply, but its important
           to take a look in other historical metrics.
         </p>
-      )}
+      )} */}
       {tiles.map((tile, index) =>
         tiles.length - 1 !== index ? (
           <React.Fragment key={tile.id}>
